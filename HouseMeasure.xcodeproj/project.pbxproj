@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		903234E520B5962700AA7DBB /* ARSCNView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903234E320B5962600AA7DBB /* ARSCNView.swift */; };
+		903234E620B5962700AA7DBB /* SCNVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903234E420B5962700AA7DBB /* SCNVector3.swift */; };
+		903234E820B7AD8D00AA7DBB /* ParserSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903234E720B7AD8D00AA7DBB /* ParserSelectViewController.swift */; };
+		903234EA20B8067D00AA7DBB /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903234E920B8067D00AA7DBB /* Line.swift */; };
+		903234EC20B8168A00AA7DBB /* DevicesModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903234EB20B8168A00AA7DBB /* DevicesModelName.swift */; };
 		903A7ECA20B58EDA00EB1991 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903A7EC920B58EDA00EB1991 /* AppDelegate.swift */; };
 		903A7ECC20B58EDA00EB1991 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 903A7ECB20B58EDA00EB1991 /* art.scnassets */; };
 		903A7ECE20B58EDA00EB1991 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903A7ECD20B58EDA00EB1991 /* ViewController.swift */; };
@@ -16,6 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		903234E320B5962600AA7DBB /* ARSCNView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSCNView.swift; sourceTree = "<group>"; };
+		903234E420B5962700AA7DBB /* SCNVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNVector3.swift; sourceTree = "<group>"; };
+		903234E720B7AD8D00AA7DBB /* ParserSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserSelectViewController.swift; sourceTree = "<group>"; };
+		903234E920B8067D00AA7DBB /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		903234EB20B8168A00AA7DBB /* DevicesModelName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesModelName.swift; sourceTree = "<group>"; };
 		903A7EC620B58EDA00EB1991 /* HouseMeasure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseMeasure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		903A7EC920B58EDA00EB1991 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		903A7ECB20B58EDA00EB1991 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -56,6 +66,9 @@
 		903A7EC820B58EDA00EB1991 /* HouseMeasure */ = {
 			isa = PBXGroup;
 			children = (
+				903234E920B8067D00AA7DBB /* Line.swift */,
+				903234E320B5962600AA7DBB /* ARSCNView.swift */,
+				903234E420B5962700AA7DBB /* SCNVector3.swift */,
 				903A7EC920B58EDA00EB1991 /* AppDelegate.swift */,
 				903A7ECB20B58EDA00EB1991 /* art.scnassets */,
 				903A7ECD20B58EDA00EB1991 /* ViewController.swift */,
@@ -63,6 +76,8 @@
 				903A7ED220B58EDA00EB1991 /* Assets.xcassets */,
 				903A7ED420B58EDA00EB1991 /* LaunchScreen.storyboard */,
 				903A7ED720B58EDA00EB1991 /* Info.plist */,
+				903234E720B7AD8D00AA7DBB /* ParserSelectViewController.swift */,
+				903234EB20B8168A00AA7DBB /* DevicesModelName.swift */,
 			);
 			path = HouseMeasure;
 			sourceTree = "<group>";
@@ -141,7 +156,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				903A7ECE20B58EDA00EB1991 /* ViewController.swift in Sources */,
+				903234E620B5962700AA7DBB /* SCNVector3.swift in Sources */,
 				903A7ECA20B58EDA00EB1991 /* AppDelegate.swift in Sources */,
+				903234EC20B8168A00AA7DBB /* DevicesModelName.swift in Sources */,
+				903234EA20B8067D00AA7DBB /* Line.swift in Sources */,
+				903234E820B7AD8D00AA7DBB /* ParserSelectViewController.swift in Sources */,
+				903234E520B5962700AA7DBB /* ARSCNView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
