@@ -21,16 +21,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var meterBtn: UIButton!
     
     
-    
     fileprivate lazy var session = ARSession()
     fileprivate lazy var sessionConfiguration = ARWorldTrackingConfiguration()
     fileprivate lazy var isMeasuring = false;
+    fileprivate lazy var isHave2Lines = true;
     fileprivate lazy var vectorZero = SCNVector3()
     fileprivate lazy var startValue = SCNVector3()
     fileprivate lazy var endValue = SCNVector3()
     fileprivate lazy var lines: [Line] = []
     fileprivate var currentLine: Line?
     fileprivate lazy var unit: DistanceUnit = .centimeter
+    
+    var getTitleString:String?
     
     
     override func viewDidLoad() {
@@ -42,6 +44,10 @@ class ViewController: UIViewController {
         // Show statistics such as fps and timing information
         //sceneARView.showsStatistics = true
         setupScene()
+        
+        // 抓取PickerView主題的字串
+        stateString.text = getTitleString
+        
         // Create a new scene
         //let scene = SCNScene(named: "art.scnassets/ship.scn")!
         
@@ -111,11 +117,11 @@ extension ViewController: ARSCNViewDelegate {
 
 // MARK: - Users Actions
 
-extension ViewController: SendStringDelegate {
-    func fetchString(_ text: String) {
-        stateString.text = text;
-        setupScene()
-    }
+extension ViewController{
+//    func fetchString(_ text: String) {
+//        stateString.text = text;
+//        setupScene()
+//    }
     
     func removeAllLines() {
         cleanBtn.isHidden = true
@@ -185,20 +191,13 @@ extension ViewController {
             if startValue == vectorZero {
                 startValue = worldPosition
                 currentLine = Line(sceneView: sceneARView, startVector: startValue, unit: unit)
-                
             }
             endValue = worldPosition
             currentLine?.update(to: endValue)
             messageLabel.text = currentLine?.distance(to: endValue) ?? "Calculating..."
         }
-        
-        
-        
-        
+        print(currentLine?.lineLegth(to: endValue) ?? "Error Value...")
     }
-    
-    
-    
 }
 
 

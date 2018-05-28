@@ -148,6 +148,9 @@
                                     <constraint firstAttribute="width" constant="20" id="Ug7-S6-mru"/>
                                 </constraints>
                                 <state key="normal" image="meter"/>
+                                <connections>
+                                    <action selector="meterButtonTappedWithButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="UwG-8l-uz6"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNE-4N-4Bf">
                                 <rect key="frame" x="51.333333333333343" y="732" width="272" height="80"/>
