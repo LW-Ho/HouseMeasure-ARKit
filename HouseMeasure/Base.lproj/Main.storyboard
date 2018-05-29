@@ -37,8 +37,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
-                                    <action selector="startBtn:" destination="98M-m4-JTZ" eventType="touchUpInside" id="bLF-Jy-S6w"/>
-                                    <segue destination="BV1-FR-VrT" kind="show" identifier="SelectTitle" id="LGU-A8-pxM"/>
+                                    <segue destination="BV1-FR-VrT" kind="presentation" identifier="goToARView" id="9dH-bl-2uD"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YM7-NM-Ggc">
@@ -105,8 +104,8 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3w-q2-R8R">
                                 <rect key="frame" x="87" y="44" width="200" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFK-iL-FUt">
@@ -118,7 +117,6 @@
                                 <state key="normal" image="reset"/>
                                 <connections>
                                     <action selector="backtoMain:" destination="BV1-FR-VrT" eventType="touchUpInside" id="1Qd-Ka-wf3"/>
-                                    <segue destination="98M-m4-JTZ" kind="show" id="mIp-AM-AQn"/>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hbh-fd-Amk">
@@ -192,9 +190,11 @@
                         <outlet property="sceneARView" destination="Q6R-kK-0eg" id="9rD-0R-MpM"/>
                         <outlet property="stateString" destination="I3w-q2-R8R" id="CBC-Ap-gXV"/>
                         <outlet property="targetImageView" destination="Ajr-Co-rVf" id="42c-KT-et0"/>
+                        <segue destination="4AY-xi-GC4" kind="unwind" identifier="backFromARView" unwindAction="backSegueWithSegue:" id="jLP-8n-hyg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <exit id="4AY-xi-GC4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="297" y="133"/>
         </scene>

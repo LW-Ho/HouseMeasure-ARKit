@@ -33,13 +33,13 @@ class ViewController: UIViewController {
     fileprivate lazy var unit: DistanceUnit = .centimeter
     fileprivate lazy var all2Lines:[Float] = []
     
-    var getTitleString:String = ""
+    var getTitleString:String = "" //接收主頁面傳送的主題字串
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupScene()
-        stateString.text = getTitleString
+        stateString.text = getTitleString //塞入
         
     }
     
@@ -78,12 +78,8 @@ class ViewController: UIViewController {
             lines.append(line)
             currentLine = nil
             cleanBtn.isHidden = false
-            //resetImageView.isHidden = false
+
         }
-        
-//        if !lines.isEmpty {
-//            print(processString())
-//        }
     }
 }
 
@@ -121,13 +117,12 @@ extension ViewController{
         lines.removeAll()
     }
     
-    @IBAction func backtoMain(_ sender: UIButton) {
+    @IBAction func backtoMain(_ sender: Any) {
         let lineCounts = lines.count
         if lineCounts % 2 == 0 {
-            removeAllLines()
-            //self.arrayDelegate = mainVC
-            //self.arrayDelegate?.fetchLinesArray(stateString.text ?? "Error Type",processString())
-            self.dismiss(animated: true, completion: nil)
+//            processString()
+//            removeAllLines()
+            performSegue(withIdentifier: "backFromARView", sender: nil)
         } else {
             let alertVC = UIAlertController(title: "Warning", message: "Please draw two lines, not one.", preferredStyle: .alert)
             alertVC.addAction(UIAlertAction(title: "Okay!", style: .cancel, handler: nil))
@@ -155,16 +150,17 @@ extension ViewController{
     }
     
     func processString() -> [Float] {
-        all2Lines = []
-        for line in lines {
-            let endString = line.getTextString().index(of: "c") ?? line.getTextString().endIndex
-            let fixString = line.getTextString()[..<endString]
-            let currentLength = Float(fixString) ?? 0
-            
-            all2Lines.append(currentLength)
-            //return currentLength
+        if !lines.isEmpty {
+            all2Lines = []
+            for line in lines {
+                let endString = line.getTextString().index(of: "c") ?? line.getTextString().endIndex
+                let fixString = line.getTextString()[..<endString]
+                let currentLength = Float(fixString) ?? 0
+                
+                all2Lines.append(currentLength)
+                //return currentLength
+            }
         }
-        
         return all2Lines
     }
     

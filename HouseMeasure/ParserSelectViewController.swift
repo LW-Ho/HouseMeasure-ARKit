@@ -17,7 +17,8 @@ class ParserSelectViewController: UIViewController {
     var sendString:String?
 
     var calculationDictionaries: Dictionary = [String: [Float]] ()
-    
+    var getString:String = ""
+    var getArray:[Float] = []
     
     
     override func viewDidLoad() {
@@ -65,44 +66,37 @@ extension ParserSelectViewController: UIPickerViewDelegate, UIPickerViewDataSour
         calculateBtn.isHidden = true //還未開始所以不能計算
     }
 
-    @IBAction func startBtn(_ sender: UIButton) {
-        
-//        self.present(arVC, animated: true, completion: nil)
-//        self.textDelegate = arVC
-//        self.textDelegate?.fetchString(sendString ?? "Error")
-        
-        self.performSegue(withIdentifier: "SelectTitle", sender: nil)
-        
-//        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//            if sendString != nil {
-//                if let sendTitleToNextView = segue.destination as? ViewController {//Main view ARViewController
-//                    sendTitleToNextView.getTitleString = sendString
-//
-//                }
-//            }
-//        }
-        
-    }
+//    @IBAction func startBtn(_ sender: UIButton) {
+//        self.performSegue(withIdentifier: "SelectTitle", sender: nil)
+//    }
 
     
     @IBAction func calculatingBtn(_ sender: UIButton) {
-        if !calculationDictionaries.isEmpty {
-            calculateBtn.isHidden = false
-            
+        if !getArray.isEmpty {
+            print(getArray)
         }
     }
 }
 
-// MARK: Segue Pass Values
+// MARK: Segue Pass and Back Values
 
 extension ParserSelectViewController {
     func updateView() {
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SelectTitle" {
+        if segue.identifier == "goToARView" {
             let arVC = segue.destination as! ViewController
             arVC.getTitleString = sendString ?? "Error String"
+        }
+    }
+    
+    @IBAction func backSegue(segue: UIStoryboardSegue) {
+        if segue.identifier == "backFromARView" {
+            let backVC = segue.source as! ViewController
+            calculateBtn.isHidden = false
+            getArray = backVC.processString()
+            backVC.removeAllLines()
         }
     }
 
