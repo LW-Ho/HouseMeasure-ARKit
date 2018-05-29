@@ -119,6 +119,10 @@ final class Line {
         return (startVector.distance(from: vector) * unit.fator)
     }
     
+    func getTextString() -> String {
+        return text.string as! String
+    }
+    
     func removeFromParentNode() {
         startNode.removeFromParentNode()
         lineNode?.removeFromParentNode()

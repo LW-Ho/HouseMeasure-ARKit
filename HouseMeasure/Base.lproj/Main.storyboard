@@ -38,6 +38,7 @@
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="startBtn:" destination="98M-m4-JTZ" eventType="touchUpInside" id="bLF-Jy-S6w"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" identifier="SelectTitle" id="LGU-A8-pxM"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YM7-NM-Ggc">
@@ -93,7 +94,7 @@
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController storyboardIdentifier="ARViewController" id="BV1-FR-VrT" customClass="ViewController" customModule="HouseMeasure" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="HouseMeasure" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D9y-Hy-PWt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -117,6 +118,7 @@
                                 <state key="normal" image="reset"/>
                                 <connections>
                                     <action selector="backtoMain:" destination="BV1-FR-VrT" eventType="touchUpInside" id="1Qd-Ka-wf3"/>
+                                    <segue destination="98M-m4-JTZ" kind="show" id="mIp-AM-AQn"/>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hbh-fd-Amk">
@@ -194,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="304.80000000000001" y="-194.33497536945814"/>
+            <point key="canvasLocation" x="297" y="133"/>
         </scene>
     </scenes>
     <resources>

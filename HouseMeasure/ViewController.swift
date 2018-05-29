@@ -31,28 +31,16 @@ class ViewController: UIViewController {
     fileprivate lazy var lines: [Line] = []
     fileprivate var currentLine: Line?
     fileprivate lazy var unit: DistanceUnit = .centimeter
+    fileprivate lazy var all2Lines:[Float] = []
     
-    var getTitleString:String?
-    
+    var getTitleString:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the view's delegate
-        //sceneARView.delegate = self
-        
-        // Show statistics such as fps and timing information
-        //sceneARView.showsStatistics = true
         setupScene()
-        
-        // 抓取PickerView主題的字串
         stateString.text = getTitleString
         
-        // Create a new scene
-        //let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // Set the scene to the view
-        //sceneView.scene = scene
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,17 +67,23 @@ class ViewController: UIViewController {
         resetValues()
         isMeasuring = true
         targetImageView.image = UIImage(named: "targetGreen")
+
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         isMeasuring = false
         targetImageView.image = UIImage(named: "targetWhite")
         if let line = currentLine {
+            
             lines.append(line)
             currentLine = nil
             cleanBtn.isHidden = false
             //resetImageView.isHidden = false
         }
+        
+//        if !lines.isEmpty {
+//            print(processString())
+//        }
     }
 }
 
@@ -118,11 +112,7 @@ extension ViewController: ARSCNViewDelegate {
 // MARK: - Users Actions
 
 extension ViewController{
-//    func fetchString(_ text: String) {
-//        stateString.text = text;
-//        setupScene()
-//    }
-    
+
     func removeAllLines() {
         cleanBtn.isHidden = true
         for line in lines {
@@ -132,8 +122,17 @@ extension ViewController{
     }
     
     @IBAction func backtoMain(_ sender: UIButton) {
-        removeAllLines()
-        self.dismiss(animated: true, completion: nil)
+        let lineCounts = lines.count
+        if lineCounts % 2 == 0 {
+            removeAllLines()
+            //self.arrayDelegate = mainVC
+            //self.arrayDelegate?.fetchLinesArray(stateString.text ?? "Error Type",processString())
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            let alertVC = UIAlertController(title: "Warning", message: "Please draw two lines, not one.", preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "Okay!", style: .cancel, handler: nil))
+            self.present(alertVC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func meterButtonTapped(button: UIButton) {
@@ -153,6 +152,20 @@ extension ViewController{
     
     @IBAction func cleanLineBtn(button: UIButton) {
         removeAllLines()
+    }
+    
+    func processString() -> [Float] {
+        all2Lines = []
+        for line in lines {
+            let endString = line.getTextString().index(of: "c") ?? line.getTextString().endIndex
+            let fixString = line.getTextString()[..<endString]
+            let currentLength = Float(fixString) ?? 0
+            
+            all2Lines.append(currentLength)
+            //return currentLength
+        }
+        
+        return all2Lines
     }
     
 }
@@ -196,7 +209,8 @@ extension ViewController {
             currentLine?.update(to: endValue)
             messageLabel.text = currentLine?.distance(to: endValue) ?? "Calculating..."
         }
-        print(currentLine?.lineLegth(to: endValue) ?? "Error Value...")
+        
+        //print(currentLine?.lineLegth(to: endValue) ?? "Error Value...")
     }
 }
 
