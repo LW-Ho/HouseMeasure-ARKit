@@ -34,12 +34,15 @@ class ViewController: UIViewController {
     fileprivate lazy var all2Lines:[Float] = []
     
     var getTitleString:String = "" //接收主頁面傳送的主題字串
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupScene()
         stateString.text = getTitleString //塞入
+        
+        
         
     }
     
@@ -119,9 +122,7 @@ extension ViewController{
     
     @IBAction func backtoMain(_ sender: Any) {
         let lineCounts = lines.count
-        if lineCounts % 2 == 0 {
-//            processString()
-//            removeAllLines()
+        if lineCounts % 2 == 0 || stateString.text == "室內高度" {
             performSegue(withIdentifier: "backFromARView", sender: nil)
         } else {
             let alertVC = UIAlertController(title: "Warning", message: "Please draw two lines, not one.", preferredStyle: .alert)
@@ -146,7 +147,10 @@ extension ViewController{
     }
     
     @IBAction func cleanLineBtn(button: UIButton) {
-        removeAllLines()
+        let counts = lines.count
+        lines[counts-1].removeFromParentNode()
+        lines.removeLast()
+        NSLog("number of lines: \(counts) \n remove lase line.")
     }
     
     func processString() -> [Float] {
@@ -163,6 +167,8 @@ extension ViewController{
         }
         return all2Lines
     }
+    
+    
     
 }
 

@@ -11,18 +11,19 @@ import UIKit
 class ParserSelectViewController: UIViewController {
     
     @IBOutlet weak var measureOption: UIPickerView!
-    @IBOutlet weak var calculateBtn: UIButton!
+    @IBOutlet weak var calculationBtn: UIButton!
     
     let measureObject = ["牆壁面積","地板坪數","室內高度","窗戶大小","門框大小"]
     var sendString:String?
 
-    var calculationDictionaries: Dictionary = [String: [Float]] ()
+    var calculationDictionaries = [String: [Float]] () //Dictionaries
     var getString:String = ""
     var getArray:[Float] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         setUpEnv() // initialization
         // Do any additional setup after loading the view.
     }
@@ -31,10 +32,16 @@ class ParserSelectViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func goToResult(_ sender: UIButton) {
+        print(calculationDictionaries)
+        //let resultVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "resultTableViewID")
+        //self.navigationController?.pushViewController(resultVC, animated: true)
 
+    }
+    
 }
 
-// MARK: - Users Actions
+// MARK: - Users Actions for PickerView
 
 extension ParserSelectViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -63,7 +70,7 @@ extension ParserSelectViewController: UIPickerViewDelegate, UIPickerViewDataSour
     func setUpEnv() {
         measureOption.dataSource = self
         measureOption.delegate = self
-        calculateBtn.isHidden = true //還未開始所以不能計算
+        calculationBtn.isHidden = true //還未開始所以不能計算
     }
 
 //    @IBAction func startBtn(_ sender: UIButton) {
@@ -71,32 +78,36 @@ extension ParserSelectViewController: UIPickerViewDelegate, UIPickerViewDataSour
 //    }
 
     
-    @IBAction func calculatingBtn(_ sender: UIButton) {
-        if !getArray.isEmpty {
-            print(getArray)
-        }
-    }
+
 }
 
 // MARK: Segue Pass and Back Values
 
 extension ParserSelectViewController {
-    func updateView() {
-        
-    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToARView" {
             let arVC = segue.destination as! ViewController
             arVC.getTitleString = sendString ?? "Error String"
+        }
+        if segue.identifier == "goToTableView" {
+            let tableVC = segue.destination as! resultTableViewController
+            tableVC.getResultDictionaries = calculationDictionaries
         }
     }
     
     @IBAction func backSegue(segue: UIStoryboardSegue) {
         if segue.identifier == "backFromARView" {
             let backVC = segue.source as! ViewController
-            calculateBtn.isHidden = false
+            calculationBtn.isHidden = false
             getArray = backVC.processString()
             backVC.removeAllLines()
+            
+            calculationDictionaries[sendString!] = getArray //使用Dict 儲存
+        }
+        
+        if segue.identifier == "backToMainView" {
+            self.navigationController?.isNavigationBarHidden = true
         }
     }
 

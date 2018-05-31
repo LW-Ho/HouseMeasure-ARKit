@@ -115,9 +115,9 @@ final class Line {
         return String(format: "%.2f%@", startVector.distance(from: vector) * unit.fator, unit.unit)
     }
     
-    func lineLegth(to vector: SCNVector3) -> Float {
-        return (startVector.distance(from: vector) * unit.fator)
-    }
+//    func lineLegth(to vector: SCNVector3) -> Float {
+//        return (startVector.distance(from: vector) * unit.fator)
+//    }
     
     func getTextString() -> String {
         return text.string as! String
