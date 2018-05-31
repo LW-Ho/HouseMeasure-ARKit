@@ -136,21 +136,23 @@ extension ViewController{
         alertVC.addAction(UIAlertAction(title: DistanceUnit.centimeter.title, style: .default) { [weak self] _ in
             self?.unit = .centimeter
         })
-        alertVC.addAction(UIAlertAction(title: DistanceUnit.inch.title, style: .default) { [weak self] _ in
-            self?.unit = .inch
-        })
-        alertVC.addAction(UIAlertAction(title: DistanceUnit.meter.title, style: .default) { [weak self] _ in
-            self?.unit = .meter
-        })
+//        alertVC.addAction(UIAlertAction(title: DistanceUnit.inch.title, style: .default) { [weak self] _ in
+//            self?.unit = .inch
+//        })
+//        alertVC.addAction(UIAlertAction(title: DistanceUnit.meter.title, style: .default) { [weak self] _ in
+//            self?.unit = .meter
+//        })
         alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
     
     @IBAction func cleanLineBtn(button: UIButton) {
-        let counts = lines.count
-        lines[counts-1].removeFromParentNode()
-        lines.removeLast()
-        NSLog("number of lines: \(counts) \n remove lase line.")
+        if !lines.isEmpty {
+            let counts = lines.count
+            lines[counts-1].removeFromParentNode()
+            lines.removeLast()
+            NSLog("number of lines: \(counts) \n remove lase line.")
+        }
     }
     
     func processString() -> [Float] {

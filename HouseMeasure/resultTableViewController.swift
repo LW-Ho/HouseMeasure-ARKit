@@ -45,8 +45,12 @@ class resultTableViewController: UITableViewController {
         guard let titleValues = getResultDictionaries[valuesKey] else {
             return 0
         }
-
-        return titleValues.count
+        if valuesKey == "室內高度" {
+            return titleValues.count // only one parameter.
+        } else {
+            return titleValues.count/2 // * x * = result
+        }
+        
         //return 0
     }
 
@@ -54,17 +58,39 @@ class resultTableViewController: UITableViewController {
         return getTitleSection[section]
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let valuesKey = getTitleSection[indexPath.section]
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
         // Configure the cell...
-        let valuesKey = getTitleSection[indexPath.section]
-        if let titleValues = getResultDictionaries[valuesKey] {
-            cell.textLabel?.text = String(titleValues[indexPath.row])
-        }
+        if valuesKey == "室內高度" {
+            if let titleValues = getResultDictionaries[valuesKey] {
+                cell.textLabel?.text = "\(indexPath.row+1). "+String(titleValues[indexPath.row])+"cm"
+            }
+        } else {
 
+            if let titleValues = getResultDictionaries[valuesKey] {
+                let i = indexPath.row * 2
+                cell.textLabel?.text = "\(indexPath.row+1). "+String(titleValues[i])+"cm x "+String(titleValues[i+1])+"cm = \(String(format: "%.2f",(titleValues[i]/100.0)*(titleValues[i+1]/100))) m²"
+            }
+        }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let valuesKey = getTitleSection[indexPath.section]
+        if valuesKey == "牆壁面積" {
+            let i = indexPath.row * 2
+            let titleValues = getResultDictionaries[valuesKey]
+            let result:Float = (titleValues![i]/100.0)*(titleValues![i+1]/100)*0.3025 //坪數
+            //let usePaint:Float = result*0.03 //1坪需要 0.03加侖油漆
+            let calculation = UIAlertController(title: "牆壁面積 油漆使用量", message: "此面積大約 \(String(format: "%.2f",result)) 坪，建議使用 \(String(format: "%.2f",result*0.03)) 加侖的油漆。\n 手刷建議使用 \(String(format: "%.2f",result*0.04)) 加侖的油漆", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Okay!", style: .cancel, handler: nil)
+            calculation.addAction(cancelAction)
+            
+            present(calculation, animated: true, completion: nil) // show the alert
+        }
     }
  
 

@@ -104,9 +104,12 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6R-kK-0eg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </arscnView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3w-q2-R8R">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3w-q2-R8R">
                                 <rect key="frame" x="87" y="44" width="200" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="HeO-rf-d1d"/>
+                                    <constraint firstAttribute="height" constant="30" id="INp-fj-wAV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
@@ -136,15 +139,6 @@
                                     <constraint firstAttribute="height" constant="30" id="GT5-Oa-QH9"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZN-w0-lcm">
-                                <rect key="frame" x="295" y="44" width="64" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <state key="normal" title="delete"/>
-                                <connections>
-                                    <action selector="cleanLineBtnWithButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Xty-Ni-6cu"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hT-9C-GOC">
                                 <rect key="frame" x="16" y="728" width="20" height="50"/>
                                 <constraints>
@@ -162,16 +156,30 @@
                                     <constraint firstAttribute="width" constant="272" id="E2E-kU-sDy"/>
                                     <constraint firstAttribute="height" constant="80" id="uNV-VY-Xiy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZN-w0-lcm">
+                                <rect key="frame" x="279" y="44" width="80" height="30"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="BtE-4a-c6V"/>
+                                    <constraint firstAttribute="height" constant="30" id="szO-oL-b3T"/>
+                                </constraints>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="cleanLineBtnWithButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Xty-Ni-6cu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="I3w-q2-R8R" firstAttribute="centerX" secondItem="D9y-Hy-PWt" secondAttribute="centerX" id="3cd-R9-3PX"/>
                             <constraint firstItem="XFK-iL-FUt" firstAttribute="leading" secondItem="TEs-pT-TvP" secondAttribute="leading" constant="10" id="46m-P2-jNC"/>
                             <constraint firstItem="hbh-fd-Amk" firstAttribute="centerX" secondItem="D9y-Hy-PWt" secondAttribute="centerX" id="5DL-hB-iiw"/>
                             <constraint firstItem="BNE-4N-4Bf" firstAttribute="centerX" secondItem="D9y-Hy-PWt" secondAttribute="centerX" id="KK9-oP-GzL"/>
+                            <constraint firstItem="TEs-pT-TvP" firstAttribute="trailing" secondItem="TZN-w0-lcm" secondAttribute="trailing" constant="16" id="MsO-6w-K8Q"/>
                             <constraint firstItem="6hT-9C-GOC" firstAttribute="leading" secondItem="TEs-pT-TvP" secondAttribute="leading" constant="16" id="RKW-x0-oF1"/>
                             <constraint firstItem="Ajr-Co-rVf" firstAttribute="centerX" secondItem="D9y-Hy-PWt" secondAttribute="centerX" id="Sji-Ru-5pI"/>
                             <constraint firstItem="Q6R-kK-0eg" firstAttribute="leading" secondItem="TEs-pT-TvP" secondAttribute="leading" id="T0s-S1-emk"/>
@@ -181,6 +189,8 @@
                             <constraint firstItem="6hT-9C-GOC" firstAttribute="bottom" secondItem="TEs-pT-TvP" secondAttribute="bottom" id="iAN-5D-PSQ"/>
                             <constraint firstItem="Ajr-Co-rVf" firstAttribute="centerY" secondItem="D9y-Hy-PWt" secondAttribute="centerY" id="lM1-Du-soX"/>
                             <constraint firstItem="Q6R-kK-0eg" firstAttribute="trailing" secondItem="TEs-pT-TvP" secondAttribute="trailing" id="n2a-Dk-vcI"/>
+                            <constraint firstItem="TZN-w0-lcm" firstAttribute="top" secondItem="TEs-pT-TvP" secondAttribute="top" id="taA-yt-jMG"/>
+                            <constraint firstItem="I3w-q2-R8R" firstAttribute="top" secondItem="TEs-pT-TvP" secondAttribute="top" id="xB3-jY-7Xh"/>
                             <constraint firstItem="hbh-fd-Amk" firstAttribute="top" secondItem="Ajr-Co-rVf" secondAttribute="bottom" constant="120" id="yjz-5Y-TBc"/>
                             <constraint firstItem="Q6R-kK-0eg" firstAttribute="top" secondItem="D9y-Hy-PWt" secondAttribute="top" id="zdw-K6-4Rm"/>
                         </constraints>
@@ -203,7 +213,7 @@
             </objects>
             <point key="canvasLocation" x="3028" y="132.26600985221674"/>
         </scene>
-        <!--Result-->
+        <!--Results-->
         <scene sceneID="oVx-JV-ehU">
             <objects>
                 <tableViewController storyboardIdentifier="resultTableViewID" id="PYI-Es-Kto" customClass="resultTableViewController" customModule="HouseMeasure" customModuleProvider="target" sceneMemberID="viewController">
@@ -212,7 +222,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="p5w-jS-Ubu">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="p5w-jS-Ubu">
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p5w-jS-Ubu" id="uu6-Xd-ekx">
@@ -226,7 +236,7 @@
                             <outlet property="delegate" destination="PYI-Es-Kto" id="cYz-Ch-UQ4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Result" id="VJh-un-2bx">
+                    <navigationItem key="navigationItem" title="Results" id="VJh-un-2bx">
                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="stop" id="3a8-z1-gn7">
                             <connections>
                                 <action selector="backToMainView:" destination="PYI-Es-Kto" id="4Ab-xN-TBg"/>

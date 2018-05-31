@@ -11,17 +11,17 @@ import ARKit
 
 enum DistanceUnit {
     case centimeter
-    case inch
-    case meter
+//    case inch
+//    case meter
     
     var fator: Float {
         switch self {
         case .centimeter:
             return 100.0
-        case .inch:
-            return 39.3700787
-        case .meter:
-            return 1.0
+//        case .inch:
+//            return 39.3700787
+//        case .meter:
+//            return 1.0
         }
     }
     
@@ -29,10 +29,10 @@ enum DistanceUnit {
         switch self {
         case .centimeter:
             return "cm"
-        case .inch:
-            return "inch"
-        case .meter:
-            return "m"
+//        case .inch:
+//            return "inch"
+//        case .meter:
+//            return "m"
         }
     }
     
@@ -40,10 +40,10 @@ enum DistanceUnit {
         switch self {
         case .centimeter:
             return "Centimeter"
-        case .inch:
-            return "Inch"
-        case .meter:
-            return "Meter"
+//        case .inch:
+//            return "Inch"
+//        case .meter:
+//            return "Meter"
         }
     }
 }
