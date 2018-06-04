@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,9 +20,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJg-00-COK">
-                                <rect key="frame" x="28" y="370" width="320" height="200"/>
+                                <rect key="frame" x="28" y="490" width="320" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="BwL-37-Md2"/>
+                                    <constraint firstAttribute="height" constant="150" id="BwL-37-Md2"/>
                                     <constraint firstAttribute="width" constant="320" id="ueq-2r-hJm"/>
                                 </constraints>
                                 <connections>
@@ -40,14 +41,14 @@
                                     <segue destination="BV1-FR-VrT" kind="presentation" identifier="goToARView" id="9dH-bl-2uD"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YM7-NM-Ggc">
-                                <rect key="frame" x="16" y="44" width="343" height="160.33333333333334"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainImgIcon" translatesAutoresizingMaskIntoConstraints="NO" id="YM7-NM-Ggc">
+                                <rect key="frame" x="16" y="44" width="343" height="228"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="Oar-1Q-5ys"/>
+                                    <constraint firstAttribute="width" secondItem="YM7-NM-Ggc" secondAttribute="height" multiplier="343:228" id="vYc-eg-4vI"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parser Your Select" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icE-iz-Dhf">
-                                <rect key="frame" x="63" y="212.33333333333337" width="249" height="149.66666666666663"/>
+                                <rect key="frame" x="63" y="323.66666666666669" width="249" height="146.33333333333331"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -67,18 +68,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="URa-Z6-dHg" firstAttribute="top" secondItem="BJg-00-COK" secondAttribute="bottom" constant="100" id="2Ja-2W-VRQ"/>
+                            <constraint firstItem="i0e-G4-9z7" firstAttribute="trailing" secondItem="YM7-NM-Ggc" secondAttribute="trailing" constant="16" id="0me-zh-jeM"/>
+                            <constraint firstItem="URa-Z6-dHg" firstAttribute="top" secondItem="BJg-00-COK" secondAttribute="bottom" constant="30" id="2Ja-2W-VRQ"/>
                             <constraint firstItem="ycE-20-ixX" firstAttribute="top" secondItem="URa-Z6-dHg" secondAttribute="bottom" constant="8" symbolic="YES" id="6yc-ad-Y0c"/>
                             <constraint firstItem="URa-Z6-dHg" firstAttribute="centerX" secondItem="rPK-wL-G9p" secondAttribute="centerX" id="BdZ-Mo-meF"/>
                             <constraint firstItem="ycE-20-ixX" firstAttribute="centerX" secondItem="rPK-wL-G9p" secondAttribute="centerX" id="CQY-sR-1QO"/>
                             <constraint firstItem="BJg-00-COK" firstAttribute="centerX" secondItem="rPK-wL-G9p" secondAttribute="centerX" id="Dkm-mQ-05I"/>
-                            <constraint firstItem="BJg-00-COK" firstAttribute="top" secondItem="icE-iz-Dhf" secondAttribute="bottom" constant="8" symbolic="YES" id="FPz-eq-f6k"/>
-                            <constraint firstItem="icE-iz-Dhf" firstAttribute="top" secondItem="YM7-NM-Ggc" secondAttribute="bottom" constant="8" symbolic="YES" id="SgE-6l-bkM"/>
+                            <constraint firstItem="BJg-00-COK" firstAttribute="top" secondItem="icE-iz-Dhf" secondAttribute="bottom" constant="20" id="FPz-eq-f6k"/>
+                            <constraint firstItem="icE-iz-Dhf" firstAttribute="top" secondItem="YM7-NM-Ggc" secondAttribute="bottom" constant="51.670000000000002" id="KzV-5N-jPD"/>
                             <constraint firstItem="icE-iz-Dhf" firstAttribute="centerX" secondItem="rPK-wL-G9p" secondAttribute="centerX" id="TY2-kO-gXL"/>
-                            <constraint firstItem="YM7-NM-Ggc" firstAttribute="top" secondItem="i0e-G4-9z7" secondAttribute="top" id="dDk-GR-z6T"/>
+                            <constraint firstItem="YM7-NM-Ggc" firstAttribute="leading" secondItem="i0e-G4-9z7" secondAttribute="leading" constant="16" id="VUM-Md-vbd"/>
                             <constraint firstItem="ycE-20-ixX" firstAttribute="bottom" secondItem="i0e-G4-9z7" secondAttribute="bottom" id="dxW-ej-fd7"/>
-                            <constraint firstItem="YM7-NM-Ggc" firstAttribute="leading" secondItem="i0e-G4-9z7" secondAttribute="leading" constant="16" id="hvd-WY-MFl"/>
-                            <constraint firstItem="i0e-G4-9z7" firstAttribute="trailing" secondItem="YM7-NM-Ggc" secondAttribute="trailing" constant="16" id="lg0-6b-fhk"/>
+                            <constraint firstItem="YM7-NM-Ggc" firstAttribute="top" secondItem="i0e-G4-9z7" secondAttribute="top" id="lu3-XY-Tdg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="i0e-G4-9z7"/>
                     </view>
@@ -86,6 +87,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="calculationBtn" destination="ycE-20-ixX" id="xq7-T0-ICv"/>
+                        <outlet property="mainImage" destination="YM7-NM-Ggc" id="EOD-hI-ENS"/>
                         <outlet property="measureOption" destination="BJg-00-COK" id="QX2-We-48d"/>
                     </connections>
                 </viewController>
@@ -256,7 +258,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wBI-5F-6Ob" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="shJ-X8-Iz9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2199" y="975"/>
+            <point key="canvasLocation" x="2199" y="831"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="d7F-6u-ZiO">
@@ -278,6 +280,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="mainImgIcon" width="709" height="473"/>
         <image name="meter" width="50" height="137"/>
         <image name="reset" width="44" height="44"/>
         <image name="targetWhite" width="60" height="60"/>

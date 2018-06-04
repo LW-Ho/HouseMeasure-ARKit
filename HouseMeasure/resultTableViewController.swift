@@ -47,8 +47,10 @@ class resultTableViewController: UITableViewController {
         }
         if valuesKey == "室內高度" {
             return titleValues.count // only one parameter.
+        } else if valuesKey == "立體容積"{
+            return titleValues.count/3 // * x * = result
         } else {
-            return titleValues.count/2 // * x * = result
+            return titleValues.count/2
         }
         
         //return 0
@@ -68,8 +70,12 @@ class resultTableViewController: UITableViewController {
             if let titleValues = getResultDictionaries[valuesKey] {
                 cell.textLabel?.text = "\(indexPath.row+1). "+String(titleValues[indexPath.row])+"cm"
             }
+        } else if valuesKey == "立體容積" {
+            if let titleValues = getResultDictionaries[valuesKey] {
+                let i = indexPath.row * 3
+                cell.textLabel?.text = "\(indexPath.row+1). "+String(titleValues[i])+"cm x "+String(titleValues[i+1])+"cm x "+String(titleValues[i+2])+"cm = \(String(format: "%.4f",(titleValues[i]/100.0)*(titleValues[i+1]/100)*(titleValues[i+2]/100))) m³"
+            }
         } else {
-
             if let titleValues = getResultDictionaries[valuesKey] {
                 let i = indexPath.row * 2
                 cell.textLabel?.text = "\(indexPath.row+1). "+String(titleValues[i])+"cm x "+String(titleValues[i+1])+"cm = \(String(format: "%.2f",(titleValues[i]/100.0)*(titleValues[i+1]/100))) m²"
@@ -119,5 +125,11 @@ extension resultTableViewController {
     @IBAction func debugBtn(_ sender: Any) {
         print(getResultDictionaries)
         print(getTitleSection.count)
+        let calculation = UIAlertController(title: "小提示", message: "如果是牆壁面積，點選下去將會跳出油漆建議使用量！", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "我知道了!", style: .cancel, handler: nil)
+        calculation.addAction(cancelAction)
+        
+        present(calculation, animated: true, completion: nil) // show the alert
+
     }
 }

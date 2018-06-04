@@ -123,11 +123,15 @@ extension ViewController{
     @IBAction func backtoMain(_ sender: Any) {
         let lineCounts = lines.count
         if lineCounts % 2 == 0 || stateString.text == "室內高度" {
+            if stateString.text == "立體容積" {
+                alterViewController()
+            } else {
+                performSegue(withIdentifier: "backFromARView", sender: nil)
+            }
+        } else if lineCounts % 3 == 0 && stateString.text == "立體容積"  {
             performSegue(withIdentifier: "backFromARView", sender: nil)
         } else {
-            let alertVC = UIAlertController(title: "Warning", message: "Please draw two lines, not one.", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "Okay!", style: .cancel, handler: nil))
-            self.present(alertVC, animated: true, completion: nil)
+            alterViewController()
         }
     }
     
@@ -168,6 +172,12 @@ extension ViewController{
             }
         }
         return all2Lines
+    }
+    
+    func alterViewController() {
+        let alertVC = UIAlertController(title: "Warning", message: "Please draw more lines.", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Got it!", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
     }
     
     

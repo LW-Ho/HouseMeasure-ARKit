@@ -12,13 +12,18 @@ class ParserSelectViewController: UIViewController {
     
     @IBOutlet weak var measureOption: UIPickerView!
     @IBOutlet weak var calculationBtn: UIButton!
+    @IBOutlet weak var mainImage: UIImageView!
     
-    let measureObject = ["牆壁面積","地板坪數","室內高度","窗戶大小","門框大小"]
+    
+    
+    let measureObject = ["立體容積","牆壁面積","地板坪數","室內高度","窗戶大小","門框大小"]
     var sendString:String?
 
     var calculationDictionaries = [String: [Float]] () //Dictionaries
     var getString:String = ""
     var getArray:[Float] = []
+    
+    let emptyView = UIView()
     
     
     override func viewDidLoad() {
@@ -41,7 +46,7 @@ class ParserSelectViewController: UIViewController {
     
 }
 
-// MARK: - Users Actions for PickerView
+// MARK: - Users Actions
 
 extension ParserSelectViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -59,18 +64,30 @@ extension ParserSelectViewController: UIPickerViewDelegate, UIPickerViewDataSour
         return measureObject[row]
     }
     
-    func pickerView(_ pickerView: UIPickerView,
-                    didSelectRow row: Int,
-                    inComponent component: Int) {
-        sendString = measureObject[row] // set the String to sender.
-        
-    }
+//    func pickerView(_ pickerView: UIPickerView,
+//                    didSelectRow row: Int,
+//                    inComponent component: Int) {
+//        sendString = measureObject[row] // set the String to sender.
+//    }
     
     
     func setUpEnv() {
         measureOption.dataSource = self
         measureOption.delegate = self
         calculationBtn.isHidden = true //還未開始所以不能計算
+        setUpPopView()
+        
+    }
+    
+    func setUpPopView() {
+//        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapImage))
+//        singleTapGesture.delegate = self as! UIGestureRecognizerDelegate
+//        emptyView.frame = self.view.frame
+//        mainImage?.addGestureRecognizer(singleTapGesture)
+    }
+    
+    @objc func didTapImage() {
+        
     }
 
 //    @IBAction func startBtn(_ sender: UIButton) {
@@ -88,7 +105,10 @@ extension ParserSelectViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToARView" {
             let arVC = segue.destination as! ViewController
-            arVC.getTitleString = sendString ?? "Error String"
+            let optionIndex = measureOption.selectedRow(inComponent: 0)
+            let optionString = measureObject[optionIndex]
+            sendString = optionString
+            arVC.getTitleString = sendString ?? "Error Type"
         }
         if segue.identifier == "goToTableView" {
             let tableVC = segue.destination as! resultTableViewController
