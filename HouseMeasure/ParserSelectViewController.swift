@@ -26,6 +26,7 @@ class ParserSelectViewController: UIViewController {
     let emptyView = UIView()
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
@@ -80,18 +81,51 @@ extension ParserSelectViewController: UIPickerViewDelegate, UIPickerViewDataSour
     }
     
     func setUpPopView() {
-//        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapImage))
-//        singleTapGesture.delegate = self as! UIGestureRecognizerDelegate
-//        emptyView.frame = self.view.frame
-//        mainImage?.addGestureRecognizer(singleTapGesture)
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapImage))
+        singleTapGesture.delegate = self as? UIGestureRecognizerDelegate
+        mainImage?.addGestureRecognizer(singleTapGesture)
+        
+        let subviewTapGesture = UITapGestureRecognizer(target: self, action: #selector(removeView))
+        subviewTapGesture.delegate = self as? UIGestureRecognizerDelegate
+        emptyView.addGestureRecognizer(subviewTapGesture)
     }
     
     @objc func didTapImage() {
+        print("Can tap.")
+        emptyView.backgroundColor = .gray
+        //emptyView.frame = self.view.frame
+        let viewPoint = CGPoint(x: 0.1 * self.view.frame.width, y: 0.1 * self.view.frame.height)
+        let viewSize = CGSize(width: 300, height: 500)//CGSize(width: 0.75 * self.view.frame.width, height: 0.75 * self.view.frame.height)
+        emptyView.frame = CGRect(origin: viewPoint, size: viewSize)
         
+        
+        // add information using UILabel()
+        let informationLabel = UILabel(frame: CGRect(x:0.1 * emptyView.frame.width,y: 0.1 * emptyView.frame.height, width:emptyView.frame.width, height:400))
+        informationLabel.numberOfLines = 0
+        informationLabel.text = "參與人員\n\n北科大資工所 - 何鎮宇\n北科大資工所 - 李炘潤\n致理科大多媒體系 - 林佩儒"
+        informationLabel.center = CGPoint(x: emptyView.frame.width/2, y: 0.15 * emptyView.frame.height)
+        informationLabel.textAlignment = .center
+        
+        emptyView.addSubview(informationLabel)
+        self.view.addSubview(emptyView)
+        
+    }
+    
+   @objc func removeView() {
+        emptyView.removeFromSuperview()
     }
 
 //    @IBAction func startBtn(_ sender: UIButton) {
 //        self.performSegue(withIdentifier: "SelectTitle", sender: nil)
+//    }
+//    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+//        let touchPoint = touch.location(in: emptyView)
+//        // 如果touchPoint在播放列表的视图范围内，则不响应手势
+//        if emptyView.frame.contains(touchPoint) {
+//            return false
+//        } else {
+//            return true
+//        }
 //    }
 
     
